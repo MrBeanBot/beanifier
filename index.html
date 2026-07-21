@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beanifier — talk like Mr Bean</title>
+    
+<script type="module">
+import init, * as bindings from '/beanifier/beanifier-web-c214211c7cc21828.js';
+const wasm = await init({ module_or_path: '/beanifier/beanifier-web-c214211c7cc21828_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+  <link rel="modulepreload" href="/beanifier/beanifier-web-c214211c7cc21828.js" crossorigin="anonymous" integrity="sha384-BSDlDMPVSILZev8g1SjbVIaiZk9T4HHReDCLxRpQguj8G7SWVGlVTGGMspichett"><link rel="preload" href="/beanifier/beanifier-web-c214211c7cc21828_bg.wasm" crossorigin="anonymous" integrity="sha384-Yj8D40bCL7+/teddnN4ek3Dr7dT26uSDbv3YUmwG22/zIxsl0gw5TKPCjmDItu2e" as="fetch" type="application/wasm"></head>
+  <body></body>
+</html>
