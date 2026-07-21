@@ -1,0 +1,28 @@
+name: pages
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - run: rustup target add wasm32-unknown-unknown
+      - uses: jetli/trunk-action@v0.5.0
+      - run: trunk build --release --public-url /beanifier/
+        working-directory: crates/beanifier-web
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: crates/beanifier-web/dist
+      - uses: actions/deploy-pages@v4
+        id: deployment
