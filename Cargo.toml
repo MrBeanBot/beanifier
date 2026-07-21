@@ -1,0 +1,34 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/beanifier-core",
+    "crates/beanifier-cli",
+    "crates/beanifier-web",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.74"
+license = "MIT"
+authors = ["Andrew Rabert <ar@nullsum.net>"]
+repository = "https://github.com/nullsum/beanifier"
+description = "Mr-Beanify any path recursively into Mr Bean speak."
+
+[workspace.dependencies]
+beanifier-core = { path = "crates/beanifier-core", version = "0.1.0" }
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+walkdir = "2"
+serde = { version = "1", features = ["derive"] }
+tempfile = "3"
+# Client-side WASM UI (no server): Yew renders the whole app in the browser.
+yew = { version = "0.21", features = ["csr"] }
+wasm-bindgen = "0.2"
+web-sys = { version = "0.3", features = ["HtmlInputElement", "HtmlTextAreaElement"] }
+console_error_panic_hook = "0.1"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+strip = true

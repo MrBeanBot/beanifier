@@ -1,0 +1,24 @@
+[package]
+name = "beanifier-web"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "Pure client-side WASM frontend for the beanifier (Yew, no server)."
+
+[[bin]]
+name = "beanifier-web"
+path = "src/main.rs"
+
+[lib]
+name = "beanifier_web"
+path = "src/lib.rs"
+
+[dependencies]
+beanifier-core = { workspace = true }
+yew = { workspace = true }
+wasm-bindgen = { workspace = true }
+web-sys = { workspace = true }
+console_error_panic_hook = { workspace = true }

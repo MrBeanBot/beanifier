@@ -1,0 +1,26 @@
+[package]
+name = "beanifier-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "Command-line tool that Mr-Beanifies any path recursively."
+
+[[bin]]
+name = "beanify"
+path = "src/main.rs"
+
+[lib]
+name = "beanifier_cli"
+path = "src/lib.rs"
+
+[dependencies]
+beanifier-core = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+walkdir = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
